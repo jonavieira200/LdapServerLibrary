@@ -24,6 +24,7 @@ namespace Gatekeeper.LdapServerLibrary.Parser.Encoder
                             {
                                 foreach (string value in attribute.Values)
                                 {
+
                                     writer.WriteOctetString(System.Text.Encoding.UTF8.GetBytes(value));
                                 }
                             }
