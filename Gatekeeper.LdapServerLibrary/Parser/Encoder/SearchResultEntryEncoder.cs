@@ -12,19 +12,20 @@ namespace Gatekeeper.LdapServerLibrary.Parser.Encoder
 
             using (writer.PushSequence(searchResultEntryApplication))
             {
-                writer.WriteOctetString(System.Text.Encoding.ASCII.GetBytes(message.SearchResultReply.CommonName));
+                writer.WriteOctetString(System.Text.Encoding.UTF8.GetBytes(message.SearchResultReply.CommonName));
                 using (writer.PushSequence())
                 {
                     foreach (Attribute attribute in message.SearchResultReply.Attributes)
                     {
                         using (writer.PushSequence())
                         {
-                            writer.WriteOctetString(System.Text.Encoding.ASCII.GetBytes(attribute.Key));
+                            writer.WriteOctetString(System.Text.Encoding.UTF8.GetBytes(attribute.Key));
                             using (writer.PushSetOf())
                             {
                                 foreach (string value in attribute.Values)
                                 {
-                                    writer.WriteOctetString(System.Text.Encoding.ASCII.GetBytes(value));
+
+                                    writer.WriteOctetString(System.Text.Encoding.UTF8.GetBytes(value));
                                 }
                             }
                         }
